@@ -2,27 +2,29 @@
 #include<stdlib.h>
 using namespace std;
 
-// input linked list 10101
-//output l1=111
-// temp=00
+// input linked list 101010
+//output two linked list one as header=111
+// and other as head=000
 struct node
 {
  int data;
  struct node*next;
 };
 
+//delete function to delete a node
 struct node * dismiss(int key,struct node *head)
 {
         struct node*temp=head;
+        //deleting first node 
         if(temp->data==key)
         {
             head=temp->next;
 
             free(temp);
-          //  printf("delete funcion called");
         }
 
         else
+        //deleting any other node 
         {
                 while(temp->next->data!=key)
                 {
@@ -49,6 +51,7 @@ void printlist(struct node*head)
     }
 }
 
+//alternate split of single linked list
 struct node *altsplit(struct node *head)
 {
          struct node*temp=head;
@@ -57,6 +60,8 @@ struct node *altsplit(struct node *head)
          struct node*header=NULL;
          while(temp!=NULL)
          {
+         	//odd positons
+         	
              if(counter%2==0)
              {
                  struct node *l1=(struct node*)malloc(sizeof(struct node));
@@ -72,9 +77,9 @@ struct node *altsplit(struct node *head)
                      start=l1;
                  }
                  counter++;
-               //  printf("this is %d",temp->data);
+             // save in new linked list and delete from old linked list  
                 head=dismiss(temp->data,head);
-             //   printf("this is aftr %d",temp->data);
+             
 
              }
 
@@ -84,8 +89,7 @@ struct node *altsplit(struct node *head)
                 counter++;
              }
          }
-                //printlist(head);
-                //printlist(header);
+                
 
                 return(head);
 
@@ -113,7 +117,7 @@ struct node* create_list(struct node*head)
 	head->next=NULL;
 
         temp=head;
-    for(i=0;i<4;i++)
+    for(i=0;i<5;i++)
     {
             struct node *new_node=NULL;
             new_node=get_node(head);
@@ -141,12 +145,6 @@ int main()
 {
      struct node*head=NULL;
 	head=create_list(head);
-  //  printlist(head);
-    //head=sorted(head,4);
-    //printlist(head);
-    //head=removeduplicates2(head);
-    //head=pairwiseswap(head);
-    //printlist(head);
     head=altsplit(head);
     //printlist(head);
     return 0;
