@@ -2,7 +2,9 @@
 #include<stdlib.h>
 using namespace std;
 
-
+// input linked list 10101
+//output l1=111
+// temp=00
 struct node
 {
  int data;
