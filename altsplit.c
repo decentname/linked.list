@@ -51,7 +51,7 @@ void printlist(struct node*head)
     }
 }
 
-//alternate split of single linked list
+//alternate split of singly linked list
 struct node *altsplit(struct node *head)
 {
          struct node*temp=head;
