@@ -85,7 +85,7 @@ struct node *altsplit(struct node *head)
 
              else
             {
-                temp=temp->next;
+                temp=temp->next->next;
                 counter++;
              }
          }
