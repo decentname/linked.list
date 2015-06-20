@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-using namespace std;
+
 
 // input linked list 101010
 //output two linked list one as header=111
@@ -43,21 +43,22 @@ struct node * dismiss(int key,struct node *head)
 
 void printlist(struct node*head)
 {
-
-    while(head!=NULL)
+	struct node* temp=head;
+    while(temp!=NULL)
     {
-        printf("%d",head->data);
-        head=head->next;
+        printf("%d ",temp->data);
+        temp=temp->next;
     }
 }
 
 //alternate split of singly linked list
 struct node *altsplit(struct node *head)
 {
-         struct node*temp=head;
+         struct node* temp=head;
+         struct node* temp1=head;
          int counter=0;
-         struct node*start=NULL;
-         struct node*header=NULL;
+         struct node* start=NULL;
+         struct node* header=NULL;
          while(temp!=NULL)
          {
          	//odd positons
@@ -70,27 +71,33 @@ struct node *altsplit(struct node *head)
                  if(counter==0)
                  {
                      header=start=l1;
+    //                 printf("\nhead is with data %d\n",header->data);
                  }
                  else
                  {
                      start->next=l1;
                      start=l1;
+      //               printf("node added with data %d\n",l1->data);
                  }
                  counter++;
+                 
              // save in new linked list and delete from old linked list  
                 head=dismiss(temp->data,head);
-             
+             	//temp=head;
 
              }
 
              else
             {
-                temp=temp->next;
+                temp=temp->next->next;
                 counter++;
              }
+  //           printf("counter value is %d\n",counter);
          }
-                
-
+        printf("---first list---\n");        
+	printlist(head);
+	printf("\n---second list---\n");
+	printlist(header);
                 return(head);
 
 }
@@ -134,7 +141,8 @@ struct node* create_list(struct node*head)
                     temp=new_node;
             }
     }
-
+//	                                                  printf("list created\n");
+//	                                                  printlist(head);
 	return(head);
 }
 
